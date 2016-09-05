@@ -848,6 +848,10 @@ Promise.prototype.then = function (fulfilled, rejected, progressed) {
             try {
                 return rejected(exception);
             } catch (newException) {
+                if (console) {
+                    console.error(exception.stack);
+                    console.error(exception.message);
+                }
                 return reject(newException);
             }
         }
